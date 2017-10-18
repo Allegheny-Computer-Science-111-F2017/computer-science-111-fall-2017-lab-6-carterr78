@@ -37,7 +37,8 @@ public class ManipulateDna {
     // Step One: Read in and display the chosen DNA string
     String dna = scanner.nextLine();
     System.out.println("DNA strand to be processed: " + dna);
-
+    System.out.println();
+    
     // Step Two: Compute the complement of the DNA String
     String comp1 = dna.replace('a','T');
     String comp2 = comp1.replace('c','G');
@@ -51,25 +52,40 @@ public class ManipulateDna {
     Random rand = new Random();
 
     // Pick a random letter from the set of DNA acceptable characters
-    int pick1 = rand.nextInt(4);
+    int pick1 = rand.nextInt(randpick.length());
     char pick = randpick.charAt(pick1);
 
     // Add chosen random letter to DNA strand
     int pick2 = rand.nextInt(dna.length());
     String addlett = dna.substring(0, pick2) + pick + dna.substring(pick2);
-    System.out.println("Inserting " + pick + " at position " + pick2 + " gives");
-    System.out.println("the string " + addlett);
+    System.out.println("Inserting " + pick + " at position " + (pick2 + 1) 
+        + " produces the string: " + addlett);
 
     // Step Four: Delete a DNA letter from a randomly chosen position in the DNA string
     int pick3 = rand.nextInt(dna.length());
     char letter = dna.charAt(pick3);
     String takelett = dna.substring(0, pick3) + dna.substring(pick3 + 1);
-    System.out.println("Removing the letter " + letter + " from position " + pick3);
-    System.out.println("gives us the string " + takelett);
-    // Step Five: Change a random position in the DNA String to a randomly chosen DNA letter
-    
-    // Step Six: Display a final thankyou message
+    System.out.println("Removing the letter " + letter + " from position " 
+        + (pick3 + 1) + " gives us the string: " + takelett);
 
+    // Step Five: Change a random position in the DNA String to a randomly chosen DNA letter
+    int pick4 = rand.nextInt(randpick.length());
+    int pick5 = rand.nextInt(dna.length());
+    char letter2 = randpick.charAt(pick4);
+    String switchlett1 = dna.substring(0, pick5) + dna.substring(pick5 + 1);
+    String switchlett2 = switchlett1.substring(0, pick5) + letter2
+        + switchlett1.substring(pick5);
+
+    //print the modified string
+    char letter3 = dna.charAt(pick5);
+    System.out.println("Removing the letter " + letter3 + " from position " 
+        + (pick5 + 1) + " and replacing it with the letter " + letter2 
+        + " createsthe string: " + switchlett2);
+
+    // Step Six: Display a final thankyou message
+    System.out.println(); 
+    System.out.println("Thank you for using the DNA Manipulator!");
+    System.out.println("Have a wonderful day.");
   }
 
 }
